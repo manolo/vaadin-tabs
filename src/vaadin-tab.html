@@ -15,58 +15,15 @@ This program is available under Apache License Version 2.0, available at https:/
   </template>
   <script>
     (function() {
-      /**
-       * `<vaadin-tab>` is a Web Component providing an accessible and customizable tab.
-       *
-       * ```
-       *   <vaadin-tab>
-       *     Tab 1
-       *   </vaadin-tab>
-       * ```
-       *
-       * The following state attributes are available for styling:
-       *
-       * Attribute  | Description | Part name
-       * -----------|-------------|------------
-       * `disabled` | Set to a disabled tab | :host
-       * `focused` | Set when the element is focused | :host
-       * `focus-ring` | Set when the element is keyboard focused | :host
-       * `selected` | Set when the tab is selected | :host
-       * `active` | Set when mousedown or enter/spacebar pressed | :host
-       * `orientation` | Set to `horizontal` or `vertical` depending on the direction of items  | :host
-       *
-       * See [ThemableMixin – how to apply styles for shadow parts](https://github.com/vaadin/vaadin-themable-mixin/wiki)
-       *
-       * @memberof Vaadin
-       * @mixes Vaadin.ElementMixin
-       * @mixes Vaadin.ThemableMixin
-       * @mixes Vaadin.ItemMixin
-       */
-      class TabElement extends Vaadin.ElementMixin(Vaadin.ThemableMixin(Vaadin.ItemMixin(Polymer.Element))) {
+
+      class TabElement extends Vaadin.ItemMixin(Vaadin.ThemableMixin(Polymer.Element)) {
         static get is() {
           return 'vaadin-tab';
-        }
-
-        static get version() {
-          return '3.0.5';
         }
 
         ready() {
           super.ready();
           this.setAttribute('role', 'tab');
-        }
-
-        _onKeyup(event) {
-          const willClick = this.hasAttribute('active');
-
-          super._onKeyup(event);
-
-          if (willClick) {
-            const anchor = this.querySelector('a');
-            if (anchor) {
-              anchor.click();
-            }
-          }
         }
       }
 
